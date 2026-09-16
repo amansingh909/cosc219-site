@@ -23,49 +23,50 @@
             <article>
                 <h3>security-harness</h3>
                 <p>This is the project I am working on right now. It is a set of tools for bug bounty research on targets I am allowed to test, built as four smaller programs that all read from the same CVE database. The recon part refuses to run unless I hand it a scope first, and anything it finds comes back labelled unverified, so I still have to confirm a lead myself before it goes in a report. This tool is very much still a work-in-progress, but I am excited to learn more and build on it.</p>
-            </article>
-<section>
-            <h3>Inside security-harness</h3>
-            <table>
-                <caption>The four tools that make security-harness, and the service they all read from</caption>
-                <thead>
-                    <tr>
-                        <th scope="col">Part</th>
-                        <th scope="col">What it does</th>
-                        <th scope="col">How it runs</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">harness</th>
-                        <td>The front door that drives everything else</td>
-                        <td>Interactive terminal app</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">cve-index</th>
-                        <td>Search over NVD and MITRE ATT&amp;CK data</td>
-                        <td>Long-running service</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">cve-classifier</th>
-                        <td>Tags a CVE with a severity and a CWE</td>
-                        <td>Batch job on a GPU</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">recon-orchestrator</th>
-                        <td>Scope-gated recon that ranks what it finds</td>
-                        <td>Runs once, then stops</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">bounty-reporter</th>
-                        <td>Turns a confirmed finding into a report</td>
-                        <td>Command line tool</td>
-                    </tr>
-                </tbody>
-            </table>
-                            <p><a href="https://github.com/amansingh909/security-harness" rel="noopener noreferrer" target="_blank">See the code on GitHub </a><Strong>(Private)</Strong></p>
 
-        </section>
+                <section>
+                    <h4>Inside security-harness</h4>
+                    <table>
+                        <caption>The four tools that make security-harness, and the service they all read from</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">Part</th>
+                                <th scope="col">What it does</th>
+                                <th scope="col">How it runs</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">harness</th>
+                                <td>The front door that drives everything else</td>
+                                <td>Interactive terminal app</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">cve-index</th>
+                                <td>Search over NVD and MITRE ATT&amp;CK data</td>
+                                <td>Long-running service</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">cve-classifier</th>
+                                <td>Tags a CVE with a severity and a CWE</td>
+                                <td>Batch job on a GPU</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">recon-orchestrator</th>
+                                <td>Scope-gated recon that ranks what it finds</td>
+                                <td>Runs once, then stops</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">bounty-reporter</th>
+                                <td>Turns a confirmed finding into a report</td>
+                                <td>Command line tool</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p><a href="https://github.com/amansingh909/security-harness" rel="noopener noreferrer" target="_blank">See the code on GitHub </a><Strong>(Private)</Strong></p>
+
+                </section>
+            </article>
             <article>
                 <h3>Aptixx</h3>
                 <p>A website I helped develop outside of class. It is the project I point at when someone asks what I have actually shipped.</p>
