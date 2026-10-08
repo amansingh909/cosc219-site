@@ -11,7 +11,7 @@
 </head>
 <body>
     <header>
-        <h1>Contact Me Anytime</h1>
+        <h1>Contact Me</h1>
         <nav>
             <a href="index.html">Home</a>
             <a href="about.html">About</a>
@@ -22,14 +22,37 @@
     <p>Please fill out this form to reach me.</p>
     <form action="#" method="post">
         <label for="name">Name:</label>
-        <input [type="text"] {id="name" name="name"}>
+        <input type="text" id="name" name="name" required>  
         <br/>
         <label for="email">Email:</label>
-        <input [type="email"] {id="email" name="email"}>
+        <input type="email" id="email" name="email" required>
+       
+
+        <br/>
+        <label for="select">Select an option:</label>
+        <select id="select" name="select" required>
+            <option value="">Please choose an option</option>
+            <option value="question">Question</option>
+            <option value="feedback">Feedback</option>
+            <option value="other">Other</option>
+        </select>
         <br/>
         <label for="message">Message:</label>
-        <textarea id="message" name="message" rows="4" cols="50">Enter your message here...</textarea>
+        <textarea id="message" name="message" placeholder="Enter your message here..." ></textarea>
         <br/>
+        <fieldset>
+            <legend>Human or Ai</legend>
+       
+        <input type="radio" id="human" name="humanorai" value="human" required>
+        <label for="human">Human</label>
+        <input type="radio" id="ai" name="humanorai" value="ai" required>
+        <label for="ai">Ai</label>
+        </fieldset>
+        <input type="checkbox" id="robotcheck" name="robotcheck" value="yes" required>
+        <label for="robotcheck">✔</label>
+
+        <br/>
+
         <button type="submit">Submit</button>
     </form>
 </body>
