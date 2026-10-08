@@ -1,0 +1,26 @@
+form label {
+    display:inline-block;
+    width: 80px;
+    margin-bottom: 12px;
+}
+body { 
+    background: #e6eced; 
+}
+
+:root {
+    --brand: #7f2a1b;
+    --ink: #12181f;
+    --muted: #6b7885;
+    --space: 1rem;
+}
+a { color: var(--brand); }
+h1 { color: var(--ink); }
+body { color: var(--ink); }
+p { margin-bottom: var(--space); }
+h1, h2, h3, h4, h5, h6 { margin-bottom: var(--space); }
+nav a { margin-right: var(--space); }
+footer { margin-top: var(--space); color: var(--muted); }
+figcaption {color: var(--brand);}
+table { color:var(--muted);}
+
+
