@@ -8,29 +8,81 @@
     box-sizing: border-box;
 }
 
-main, body, form {
+main, header, footer {
 max-width: 40rem;
-margin: var(--space);
+margin: var(--space) auto;
 padding: var(--space);
 }
+
+body {
+    color: var(--ink);
+    background: #e6eced;
+    font-family: system-ui, "Segoe UI", Roboto, sans-serif;
+    line-height: 1.5;
+}
+
+h1 { font-size: 2.25rem; }   
+h2 { font-size: 1.75rem; }
+h3 { font-size: 1.375rem; }
+h4 { font-size: 1.125rem; }
+h5 { font-size: 1rem; }
+h6 { font-size: 0.875rem; }
+
+
 
 fieldset {
     border: 1px solid var(--muted);
     border-radius: 1rem;
-    padding: 0;
+    padding: var(--space);
+    margin-bottom: var(--space);
 }
 
-form label {
-    display:inline-block;
-    width: 5rem;
+legend { color: var(--brand); font-weight: bold; padding: 0 0.5rem; }
+
+
+fieldset label,
+input[type="checkbox"] + label { display: inline; margin-right: var(--space); }
+
+input[type="text"],
+input[type="email"],
+select,
+textarea {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid var(--muted);
+    border-radius: 0.25rem;
+    font: inherit;
+    margin-bottom: var(--space);
+}
+
+button {
+    background: var(--brand);
+    color: #fff;
+    border: none;
+    border-radius: 0.25rem;
+    padding: 0.5rem 1.25rem;
+    font: inherit;
+    cursor: pointer;
+}
+
+
+button:hover { background: var(--ink); }
+a:hover { text-decoration: none; }
+a:focus, input:focus, select:focus, textarea:focus, button:focus {
+    outline: 3px solid var(--brand);
+    outline-offset: 2px;
+}
+
+article {
+    background: #fff;
+    border: 1px solid var(--muted);
+    border-radius: 0.5rem;
+    padding: var(--space);
     margin-bottom: var(--space);
 }
 
 
-
 a { color: var(--brand); }
-h1 { color: var(--ink); }
-body { color: var(--ink); background: #e6eced;  }
 p { margin-bottom: var(--space); }
 h1, h2, h3, h4, h5, h6 { margin-bottom: var(--space); }
 nav a { margin-right: var(--space); }
@@ -38,4 +90,6 @@ footer { margin-top: var(--space); color: var(--muted); }
 figcaption {color: var(--brand);}
 table { color:var(--muted);}
 
+
+.intro { font-size: 1.125rem; margin-bottom: var(--space); }
 
