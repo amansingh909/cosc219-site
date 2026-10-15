@@ -119,5 +119,11 @@ table { color:var(--muted);}
 
 @media (min-width: 50rem) {
     main, header, footer { max-width: 60rem; }
+
+    .two-col {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: var(--space);
+    }
 }
 
