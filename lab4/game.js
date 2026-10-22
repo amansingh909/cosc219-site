@@ -29,6 +29,11 @@ const STARTING_LIVES = 6;
    ---------------------------------------------------------------------- */
 
 function normalizeGuess(input) {
+   input = input.trim().toLowerCase();
+   if (input.length !== 1 || input < "a" || input > "z") {
+       return "";
+   }
+   return input;
 
 }
 
@@ -43,6 +48,7 @@ function normalizeGuess(input) {
    ---------------------------------------------------------------------- */
 
 function isValidGuess(input) {
+   return normalizeGuess(input) !== "";
 
 }
 
@@ -59,6 +65,7 @@ function isValidGuess(input) {
    ---------------------------------------------------------------------- */
 
 function alreadyGuessed(letter, guessedLetters) {
+   return guessedLetters.toLowerCase().includes(letter.toLowerCase());
 
 }
 
@@ -74,6 +81,8 @@ function alreadyGuessed(letter, guessedLetters) {
    ---------------------------------------------------------------------- */
 
 function isCorrect(letter, word) {
+   const guess = normalizeGuess(letter);
+   return guess !== "" && word.toLowerCase().includes(guess);
 
 }
 
@@ -89,6 +98,7 @@ function isCorrect(letter, word) {
    ---------------------------------------------------------------------- */
 
 function livesAfterGuess(lives, correct) {
+   return correct ? lives : Math.max(0, lives - 1);
 
 }
 
@@ -105,6 +115,7 @@ function livesAfterGuess(lives, correct) {
    ---------------------------------------------------------------------- */
 
 function scoreFor(word, lives) {
+   return word.length * 10 + lives * 5;
 
 }
 
@@ -126,6 +137,15 @@ function scoreFor(word, lives) {
    ---------------------------------------------------------------------- */
 
 function statusMessage(word, guessedLetters, lives) {
+   const lifeWord = lives === 1 ? "life" : "lives";
+
+   if (lives <= 0) {
+      return `Out of lives. The word was "${word}".`;
+   } else if (hasWon(word, guessedLetters)) {
+      return `You got it! "${word}" with ${lives} ${lifeWord} left.`;
+   } else {
+      return `${lives} ${lifeWord} left. Guessed: ${guessedLetters || "nothing yet"}`;
+   }
 
 }
 
@@ -136,6 +156,17 @@ function statusMessage(word, guessedLetters, lives) {
    ---------------------------------------------------------------------- */
 
 function gradeFor(score) {
+   if (score >= 90) {
+      return "A";
+   } else if (score >= 80) {
+      return "B";
+   } else if (score >= 70) {
+      return "C";
+   } else if (score >= 60) {
+      return "D";
+   } else {
+      return "F";
+   }
 
 }
 
