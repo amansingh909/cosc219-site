@@ -188,3 +188,15 @@ function revealWord(word, guessedLetters) {
 function hasWon(word, guessedLetters) {
   return !revealWord(word, guessedLetters).includes("_");
 }
+
+/* Part C2
+
+   1. Nothing breaks. I swapped them and it played the same. correct is
+      already worked out before both lines, and neither line uses what the
+      other one changes. over gets checked after both anyway.
+
+   2. Bad input like "!" turns into "", and "".includes check is always
+      true, so it would say 'You already tried ""'. The guard catches it
+      first and shows "Enter a single letter." so everything after only
+      gets a real letter.
+*/
