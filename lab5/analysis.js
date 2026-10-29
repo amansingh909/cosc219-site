@@ -209,7 +209,10 @@ function openDistance(trails) {
    ---------------------------------------------------------------------- */
 
 function summaryLines(trails) {
-
+  return trails.map(trail => {
+    const closedText = trail.closed ? " (closed)" : "";
+    return `${trail.name} — ${trail.km} km, ${trail.rating}${closedText}`;
+  });
 }
 
 
@@ -232,5 +235,15 @@ function summaryLines(trails) {
    ---------------------------------------------------------------------- */
 
 function report(trails) {
+  const openTrails = trails.filter(trail => !trail.closed);
+  const longestOpenTrail = longestTrail(openTrails);
 
+  return {
+    total: trails.length,
+    open: openTrails.length,
+    closed: trails.length - openTrails.length,
+    openKm: openDistance(trails),
+    longestOpen: longestOpenTrail ? longestOpenTrail.name : null,
+    byRating: countByRating(trails)
+  };
 }
