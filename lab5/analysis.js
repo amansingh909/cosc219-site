@@ -172,7 +172,10 @@ function longestTrail(trails) {
    ---------------------------------------------------------------------- */
 
 function countByRating(trails) {
-
+  return trails.reduce((acc, trail) => {
+    acc[trail.rating] = (acc[trail.rating] ?? 0) + 1;
+    return acc;
+  }, {});
 }
 
 
@@ -188,7 +191,11 @@ function countByRating(trails) {
    ---------------------------------------------------------------------- */
 
 function openDistance(trails) {
-
+  return trails
+    .filter(trail => !trail.closed)
+    .map(trail => trail.km)
+    .reduce((sum, km) => sum + km, 0)
+    .toFixed(1) * 1; // convert string to number
 }
 
 
