@@ -141,7 +141,8 @@ function allUnder(trails, limit) {
    ---------------------------------------------------------------------- */
 
 function totalDistance(trails) {
-
+  const total = trails.reduce((sum, trail) => sum + trail.km, 0);
+  return Math.round(total * 10) / 10;
 }
 
 
@@ -154,7 +155,10 @@ function totalDistance(trails) {
    ---------------------------------------------------------------------- */
 
 function longestTrail(trails) {
-
+  return trails.reduce((longest, trail) => {
+    if (!longest || trail.km > longest.km) return trail;
+    return longest;
+  }, undefined);
 }
 
 
