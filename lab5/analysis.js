@@ -235,13 +235,13 @@ function summaryLines(trails) {
    ---------------------------------------------------------------------- */
 
 function report(trails) {
-  const openTrails = trails.filter(trail => !trail.closed);
-  const longestOpenTrail = longestTrail(openTrails);
+  const openList = openTrails(trails);
+  const longestOpenTrail = longestTrail(openList);
 
   return {
     total: trails.length,
-    open: openTrails.length,
-    closed: trails.length - openTrails.length,
+    open: openList.length,
+    closed: trails.length - openList.length,
     openKm: openDistance(trails),
     longestOpen: longestOpenTrail ? longestOpenTrail.name : null,
     byRating: countByRating(trails)
