@@ -5,6 +5,8 @@
 */
 
 // import TRAIL_DATA from ./data.js and TrailRegistry from ./registry.js
+import { TRAIL_DATA } from './data.js';
+import { TrailRegistry } from './registry.js';
 
 
 /* Build a registry from the data, close Bear Creek, then:
@@ -14,3 +16,15 @@
 
        6 trails, 5 open, 46.7 km total. Steepest: Pincushion Peak.
 */
+const registry = TrailRegistry.fromData(TRAIL_DATA);
+const bearCreek = registry.find("Bear Creek");
+if (bearCreek) bearCreek.close();
+const list = document.querySelector("#trails");
+registry.describeAll().forEach(line => {
+  const li = document.createElement("li");
+  li.textContent = line;
+  list.append(li);
+});
+
+const summary = document.querySelector("#summary");
+summary.textContent = `${registry.size} trails, ${registry.openTrails.length} open, ${registry.totalDistance} km total. Steepest: ${registry.steepest?.name ?? "N/A"}.`;
