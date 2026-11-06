@@ -8,6 +8,7 @@
 
 
 export class Trail {
+  #closed = false;
 
   /* A truly private field. The # is part of the name; nothing outside this
      class body can read or write it. Start it as false. */
@@ -20,6 +21,11 @@ export class Trail {
 
   constructor(name, km, rating, gain) {
     // store the four values on `this`, and increase Trail.count
+    this.name = name;
+    this.km = km;
+    this.rating = rating;
+    this.gain = gain;
+    Trail.count++;
   }
 
 
@@ -32,6 +38,7 @@ export class Trail {
      stored on it.
      ---------------------------------------------------------------- */
   get steepness() {
+    return Math.round(this.gain / this.km);
 
   }
 
@@ -39,6 +46,7 @@ export class Trail {
   /* get isClosed — read the private field.
      This is how the outside world is allowed to see #closed. */
   get isClosed() {
+    return this.#closed;
 
   }
 
@@ -48,17 +56,21 @@ export class Trail {
          trail.close().describe()
      ---------------------------------------------------------------- */
   close() {
+    this.#closed = true;
+    return this;
 
   }
 
   open() {
-
+    this.#closed = false;
+    return this;
   }
 
 
   /* describe()  →  "Knox Mountain — 2.8 km, moderate"
      Note the em dash and the comma. Use a template literal. */
   describe() {
+    return `${this.name} — ${this.km} km, ${this.rating}`;
 
   }
 
@@ -73,7 +85,13 @@ export class Trail {
          →  { name: "...", km: 2.8, rating: "...", gain: 250, closed: false }
      ---------------------------------------------------------------- */
   toJSON() {
-
+    return {
+      name: this.name,
+      km: this.km,
+      rating: this.rating,
+      gain: this.gain,
+      closed: this.#closed
+    };
   }
 
 
@@ -85,7 +103,8 @@ export class Trail {
        Trail.fromObject({ name: "Z", km: 3, rating: "easy" }).gain  →  0
      ---------------------------------------------------------------- */
   static fromObject(obj) {
-
+    const { name, km, rating, gain = 0 } = obj;
+    return new Trail(name, km, rating, gain);
   }
 }
 
@@ -98,8 +117,9 @@ export class BikeTrail extends Trail {
      `this` — touch `this` before that line and you get a ReferenceError,
      because the instance does not exist yet.
      ---------------------------------------------------------------- */
-  constructor(name, km, rating, gain, surface) {
-
+  constructor(name, km, rating, gain, surface = "gravel") {
+    super(name, km, rating, gain);
+    this.surface = surface;
   }
 
 
@@ -110,6 +130,7 @@ export class BikeTrail extends Trail {
      super.describe() gives you the first part.
      ---------------------------------------------------------------- */
   describe() {
+    return `${super.describe()} — ${this.surface}`;
 
   }
 
