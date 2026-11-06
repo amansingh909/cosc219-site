@@ -12,11 +12,10 @@ export class Trail {
 
   /* A truly private field. The # is part of the name; nothing outside this
      class body can read or write it. Start it as false. */
-  // #closed = false;
 
   /* A static property belongs to the CLASS, not to any instance.
      Count how many Trails have been created. */
-  // static count = 0;
+  static count = 0;
 
 
   constructor(name, km, rating, gain) {
@@ -138,6 +137,10 @@ export class BikeTrail extends Trail {
   /* toJSON() — everything the parent returns, plus surface.
      Spread super.toJSON() rather than listing the fields again. */
   toJSON() {
+    return {
+      ...super.toJSON(),
+      surface: this.surface
+    };
 
   }
 }
