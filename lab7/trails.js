@@ -74,7 +74,9 @@ export function removeTrail(trails, id) {
    ---------------------------------------------------------------------- */
 
 export function toggleTrail(trails, id) {
-
+   return trails.map(trail =>
+      trail.id === id ? { ...trail, closed: !trail.closed } : trail
+   );
 }
 
 
@@ -96,5 +98,10 @@ export function toggleTrail(trails, id) {
    ---------------------------------------------------------------------- */
 
 export function findAction(target) {
+   const button = target.closest("button");
+   if (!button) return null;
+   const row = button.closest(".trail");
+   if (!row) return null;
+   return { action: button.dataset.action, id: row.dataset.id };
 
 }
