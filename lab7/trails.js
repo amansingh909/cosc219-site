@@ -20,6 +20,12 @@
    ---------------------------------------------------------------------- */
 
 export function makeTrail(name, km) {
+   return {
+     id: String(Date.now()) + Math.random().toString(16).slice(2, 8),
+     name: name.trim(),
+     km: Number(km),
+     closed: false
+   };
 
 }
 
@@ -39,6 +45,8 @@ export function makeTrail(name, km) {
    ---------------------------------------------------------------------- */
 
 export function isValidTrail(name, km) {
+     const n = Number(km);
+     return name.trim().length > 0 && Number.isFinite(n) && n > 0;
 
 }
 
@@ -47,7 +55,7 @@ export function isValidTrail(name, km) {
    Spread, do not push. */
 
 export function addTrail(trails, trail) {
-
+   return [...trails, trail];
 }
 
 
@@ -55,7 +63,7 @@ export function addTrail(trails, trail) {
    An id that is not there simply changes nothing. */
 
 export function removeTrail(trails, id) {
-
+   return trails.filter(trail => trail.id !== id);
 }
 
 
@@ -66,7 +74,9 @@ export function removeTrail(trails, id) {
    ---------------------------------------------------------------------- */
 
 export function toggleTrail(trails, id) {
-
+   return trails.map(trail =>
+      trail.id === id ? { ...trail, closed: !trail.closed } : trail
+   );
 }
 
 
