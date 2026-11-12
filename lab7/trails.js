@@ -74,9 +74,7 @@ export function removeTrail(trails, id) {
    ---------------------------------------------------------------------- */
 
 export function toggleTrail(trails, id) {
-   return trails.map(trail =>
-      trail.id === id ? { ...trail, closed: !trail.closed } : trail
-   );
+
 }
 
 
