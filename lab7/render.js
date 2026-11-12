@@ -34,7 +34,37 @@
    function an <img onerror> and checks nothing was created.
    ---------------------------------------------------------------------- */
 
+   function makeButton(action, label) {
+  const button = document.createElement("button");
+  button.type = "button";
+  button.dataset.action = action;
+  const span = document.createElement("span");
+  span.classList.add("btn-label");
+  span.textContent = label;
+  button.append(span);
+  return button;
+}
+
 export function createTrailItem(trail) {
+  const li = document.createElement("li");
+  li.classList.add("trail");
+  if (trail.closed) li.classList.add("is-closed");
+  li.dataset.id = trail.id;
+
+  const name = document.createElement("span");
+  name.classList.add("trail-name");
+  name.textContent = trail.name;
+
+  const km = document.createElement("span");
+  km.classList.add("trail-km");
+  km.textContent = `${trail.km} km`;
+
+  const toggle = makeButton("toggle", trail.closed ? "Reopen" : "Close");
+  const del = makeButton("delete", "Delete");
+  del.setAttribute("aria-label", `Delete ${trail.name}`);
+
+  li.append(name, km, toggle, del);
+  return li;
 
 }
 
@@ -46,7 +76,7 @@ export function createTrailItem(trail) {
    ---------------------------------------------------------------------- */
 
 export function renderTrails(trails, container) {
-
+  container.replaceChildren(...trails.map(createTrailItem));
 }
 
 
@@ -60,5 +90,9 @@ export function renderTrails(trails, container) {
    ---------------------------------------------------------------------- */
 
 export function summaryText(trails) {
-
+  if (trails.length === 0) return "No trails yet. Add one above.";
+  const openCount = trails.filter(trail => !trail.closed).length;
+  const totalKm = trails.reduce((sum, trail) => sum + trail.km, 0);
+  const trailWord = trails.length === 1 ? "trail" : "trails";
+  return `${trails.length} ${trailWord}, ${openCount} open, ${totalKm.toFixed(1)} km total.`;
 }
