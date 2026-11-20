@@ -7,6 +7,14 @@
   --line:  #dce1e6;
 }
 
+html {
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
 body {
   font-family: system-ui, sans-serif;
   line-height: 1.6;
@@ -55,7 +63,8 @@ button {
 input:focus,
 select:focus,
 button:focus {
-  outline: none;
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
 }
 
 #count { color: var(--muted); }
