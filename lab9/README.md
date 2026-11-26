@@ -7,4 +7,4 @@ I'd use Promise.all when the page needs every result to be useful, like getTrail
 The grid, because row-cols-1 row-cols-md-2 row-cols-lg-3 gave me 3 cards per row without a single media query.
 
 ## AI use
-I used co-pilot for suggestions for some parts of the lab.
+I used co-pilot for suggestions for some parts of the lab. It also reviewed my index.html, app.js and main.js and pointed out bugs
